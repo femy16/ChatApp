@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-
+import os
 app = Flask(__name__)
 
 
@@ -43,4 +43,7 @@ def add_message(username):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port=8080, debug=True)
+    
+        app.run(host=os.getenv('IP', '0.0.0.0'), port=int(os.getenv('PORT', 8080)))
+
+    # app.run(host='0.0.0.0',port=8080, debug=True)
